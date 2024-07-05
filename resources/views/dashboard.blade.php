@@ -7,45 +7,41 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+
+            <!-- Section des Groupes -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h3>Welcome on the Wall</h3>
-                    <br>
-
-                    <!-- Form to publish a message -->
-                    <form action='{{ route('publishMessage') }}' method="POST">
+                    <h1 class="text-lg font-bold mb-4">Groups List</h1>
+                    <form action="{{ route('selectGroup') }}" method="POST" class="flex items-center">
                         @csrf
-                        <input class="bg-black text-white rounded px-2 py-1" type="text" name="message" placeholder="Enter your message">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Post on the Wall</button>
+                        <select name="active_group_id" class="block w-full max-w-xs border-gray-300 text-black rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            @foreach($groups as $group)
+                                <option value="{{ $group->id }}" @if($user->active_group_id == $group->id) selected @endif>{{ $group->name }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="ml-4 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            Select
+                        </button>
                     </form>
-                    <br>
-
-                    <!-- Link to export users as CSV -->
-                    <a href="{{ route('exportUsers') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Export Users (CSV)</a>
-                    <br><br>
-                    <a href="{{ route('exportPost') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Export Posts (CSV)</a>
-                    <br><br>
-
-                    <!-- List of messages -->
-                    <ul>
-                        @foreach($messages as $message)
-                        <li>
-                            {{ $message->message }}
-
-                            <!-- Edit and Delete links for the author -->
-                            @if($message->user_id == Auth::id())
-                            <a href="{{ route('deleteMessage', $message->id) }}" class="text-red-600 hover:text-red-800">[Delete]</a>
-                            <a href="{{ route('editMessageForm', $message->id) }}" class="text-blue-600 hover:text-blue-800">[Edit]</a>
-                            @endif
-                        </li>
-                        @endforeach
-                    </ul>
-                    <br>
-
-                    <!-- Pagination links -->
-                    {{ $messages->links() }}
                 </div>
             </div>
+
+            <!-- Section des Todos -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h1 class="text-lg font-bold mb-4">Todos List</h1>
+                    @if(!$todos || $todos->isEmpty())
+                        <p>No todos found for the selected group.</p>
+                    @else
+                        <ul>
+                            @foreach($todos as $todo)
+                                <li>{{ $todo->title }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
         </div>
     </div>
 </x-app-layout>

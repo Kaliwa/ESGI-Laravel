@@ -1,34 +1,28 @@
 <?php
 
-use App\Http\Controllers\PostExportController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\WallController;
+use App\Http\Controllers\TodoListController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserExportController;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\WallController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
+
 Route::get('/dashboard', [WallController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::post('/postMessage', [WallController::class, 'write'])->name('publishMessage');
-
-Route::get('/editMessageForm/{id}', [WallController::class, 'editMessageForm'])->name('editMessageForm');
-
-Route::post('/updateMessage', [WallController::class, 'updateMessage'])->name('updateMessage');
-
-Route::get('/deleteMessage/{id}', [WallController::class, 'delete'])->name('deleteMessage');
-
-
-Route::get('/export-users', [UserExportController::class, 'export'])->name('exportUsers');
-Route::get('/export-post', [PostExportController::class, 'export'])->name('exportPost');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/select-group', [GroupController::class, 'selectGroup'])->name('selectGroup');
+
+Route::resource('groups', GroupController::class);
+Route::resource('todos', TodoListController::class);
 
 require __DIR__ . '/auth.php';
