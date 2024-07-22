@@ -2,23 +2,17 @@
 
 namespace App\Providers;
 
+use App\Models\Group;
 use Illuminate\Support\ServiceProvider;
+use App\Models\TodoList;
+use App\Observers\GroupObserver;
+use App\Observers\TodoListObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot()
     {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        //
+        TodoList::observe(TodoListObserver::class);
+        Group::observe(GroupObserver::class);
     }
 }
