@@ -12,13 +12,13 @@
                     <a href="{{ route('todos.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Create Todo
                     </a>
-                    <ul>
+                    <ul class="mt-4">
                         @foreach ($todos as $todo)
-                            <li>
-                                <a href="{{ route('todos.show', $todo->id) }}">{{ $todo->title }}</a>
-                                <a href="{{ route('todos.edit', $todo->id) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
+                            <li class="mb-2">
+                                <a href="{{ route('todos.show', $todo->id) }}" class="text-lg font-semibold text-blue-500 hover:text-blue-700">{{ $todo->title }}</a>
+                                <a href="{{ route('todos.edit', $todo->id) }}" class="text-blue-500 hover:text-blue-700 ml-4">Edit</a>
                                 
-                                <form action="{{ route('todos.destroy', $todo->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('todos.destroy', $todo->id) }}" method="POST" class="inline-block ml-4">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>

@@ -12,10 +12,15 @@
                     <form method="POST" action="{{ route('todos.update', $todo->id) }}">
                         @csrf
                         @method('PUT')
-                        <div>
-                            <input type="text" id="title" name="title" value="{{ $todo->title }}" required>
+
+                        <div class="mb-4">
+                            <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Todo Title</label>
+                            <input type="text" id="title" name="title" value="{{ $todo->title }}" required class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-300">
                         </div>
-                        <button type="submit">Update todo</button>
+
+                        <button type="submit" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            Update Todo
+                        </button>
                     </form>
                 </div>
             </div>

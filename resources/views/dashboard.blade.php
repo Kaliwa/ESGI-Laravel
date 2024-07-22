@@ -26,14 +26,13 @@
                 </div>
             </div>
 
-            <!-- Section des Todos -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-lg font-bold mb-4">Todos List</h1>
                     @if(!$todos || $todos->isEmpty())
                         <p>No todos found for the selected group.</p>
                     @else
-                        <ul>
+                        <ul class="list-disc pl-5">
                             @foreach($todos as $todo)
                                 <li>{{ $todo->title }}</li>
                             @endforeach
@@ -41,7 +40,6 @@
                     @endif
                 </div>
             </div>
-
         </div>
     </div>
 </x-app-layout>

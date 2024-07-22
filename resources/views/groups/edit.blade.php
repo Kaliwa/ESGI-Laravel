@@ -13,17 +13,21 @@
                         @csrf
                         @method('PUT')
 
-                        <div>
-                            <label for="name">Group Name</label>
-                            <input type="text" id="name" name="name" value="{{ $group->name }}" required>
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Group Name</label>
+                            <input type="text" id="name" name="name" value="{{ $group->name }}" required class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-300">
                         </div>
 
-                        <div>
-                            <label for="description">Group Description</label>
-                            <textarea id="description" name="description" required>{{ $group->description }}</textarea>
+                        <div class="mb-4">
+                            <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Group Description</label>
+                            <textarea id="description" name="description" required class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-300">{{ $group->description }}</textarea>
                         </div>
 
-                        <button type="submit">Update Group</button>
+                        <div class="mt-6">
+                            <button type="submit" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                Update Group
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -2,13 +2,13 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex justify-between items-center w-full">
                 <!-- Logo -->
-                
-                <a href="/dashboard">Dashboard</a>
-                <a href="/groups">Groupes</a>
-                <a href="/todos">Todos</a>
-
+                <div class="flex justify-between items-center w-2/5">
+                    <a class="text-white" href="/dashboard">Dashboard</a>
+                    <a class="text-white" href="/groups">Groupes</a>
+                    <a class="text-white" href="/todos">Todos</a>
+                </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">

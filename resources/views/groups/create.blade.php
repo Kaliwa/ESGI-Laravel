@@ -12,17 +12,19 @@
                     <form method="POST" action="{{ route('groups.store') }}">
                         @csrf
 
-                        <div>
-                            <label for="name">Group Name</label>
-                            <input type="text" id="name" name="name" required>
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Group Name</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-300">
                         </div>
 
-                        <div>
-                            <label for="description">Group Description</label>
-                            <textarea id="description" name="description" required></textarea>
+                        <div class="mb-4">
+                            <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Group Description</label>
+                            <textarea id="description" name="description" required class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-300"></textarea>
                         </div>
 
-                        <button type="submit">Create Group</button>
+                        <button type="submit" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                            Create Group
+                        </button>
                     </form>
                 </div>
             </div>
