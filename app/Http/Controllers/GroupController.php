@@ -14,6 +14,20 @@ class GroupController extends Controller
         return view('groups.index', compact('groups'));
     }
 
+    public function update(Request $request, Group $group)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+        ]);
+
+        $group->name = $request->input('name');
+        $group->description = $request->input('description');
+        $group->save();
+
+        return redirect()->route('groups.index')->with('success', 'Groupe mis à jour avec succès.');
+    }
+
     public function create()
     {
         return view('groups.create');
