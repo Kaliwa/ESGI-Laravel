@@ -5,6 +5,7 @@ use App\Http\Controllers\TodoListController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\WallController;
+use App\Http\Controllers\PostExportController;
 
 
 Route::get('/', function () {
@@ -24,5 +25,12 @@ Route::post('/select-group', [GroupController::class, 'selectGroup'])->name('sel
 
 Route::resource('groups', GroupController::class);
 Route::resource('todos', TodoListController::class);
+
+Route::get('/groups/{group}/add-users', [GroupController::class, 'showAddUsersForm'])->name('groups.addUsers');
+Route::post('/groups/{group}/add-users', [GroupController::class, 'addUsers'])->name('groups.addUsers.submit');
+
+
+Route::get('/export-todolist/{groupId}', [PostExportController::class, 'export']);
+
 
 require __DIR__ . '/auth.php';

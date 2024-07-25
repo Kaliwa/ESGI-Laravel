@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\PostExport;
+use App\Exports\TodoListExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PostExportController extends Controller
 {
-    public function export(): BinaryFileResponse
+    public function export($groupId): BinaryFileResponse
     {
-        return Excel::download(new PostExport(), 'posts.csv');
+        return Excel::download(new TodoListExport($groupId), 'todolist.csv');
     }
 }

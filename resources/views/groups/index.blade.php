@@ -37,6 +37,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
                                         </form>
+                                        <a href="{{ route('groups.addUsers', $group->id) }}" class="text-green-500 hover:text-green-700 ml-4">Add Users</a>
                                     </span>
                                 </li>
                             @endforeach

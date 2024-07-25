@@ -26,7 +26,8 @@
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <!-- Section des Todos -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mb-8">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-lg font-bold mb-4">Todos List</h1>
                     @if(!$todos || $todos->isEmpty())
@@ -35,6 +36,22 @@
                         <ul class="list-disc pl-5">
                             @foreach($todos as $todo)
                                 <li>{{ $todo->title }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <!-- Section des Utilisateurs -->
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h1 class="text-lg font-bold mb-4">Users in Active Group</h1>
+                    @if(!$users || $users->isEmpty())
+                        <p>No users found for the selected group.</p>
+                    @else
+                        <ul class="list-disc pl-5">
+                            @foreach($users as $user)
+                                <li>{{ $user->name }} ({{ $user->email }})</li>
                             @endforeach
                         </ul>
                     @endif

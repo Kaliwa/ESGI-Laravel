@@ -10,10 +10,13 @@ class TodoListController extends Controller
 {
     public function index()
     {
-        $todos = TodoList::all();
+	$user = Auth::user();
+        if ($user->active_group_id) {
+            $todos = TodoList::where('group_id', $user->active_group_id)->get();
+        }
         return view('todos.index', compact('todos'));
-    }
 
+    }
     public function create()
     {
         return view('todos.create');
