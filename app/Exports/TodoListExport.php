@@ -17,15 +17,11 @@ class TodoListExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        return TodoList::where('group_id', $this->groupId)->get();
+        return TodoList::where('group_id', $this->groupId)->get(['title']);
     }
 
     public function headings(): array
     {
-        return [
-            'ID',
-            'Title',
-            'Group ID',
-        ];
+        return ['Title'];
     }
 }
