@@ -7,30 +7,29 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            <!-- Formulaire d'ajout d'utilisateurs -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-lg font-bold mb-4">Add Users to Group</h1>
 
                     <!-- Affichage des messages de succès -->
                     @if(session('success'))
-                        <div class="mb-4 p-4 bg-green-200 text-green-800 rounded">
+                        <div class="mb-4 p-4 bg-green-200 text-green-800 rounded-md">
                             {{ session('success') }}
                         </div>
                     @endif
 
                     <form action="{{ route('groups.addUsers.submit', $group->id) }}" method="POST">
                         @csrf
+
                         <div class="mb-4">
-                            <label for="users" class="block text-sm font-medium text-gray-700">Select Users</label>
-                            <select id="users" name="user_ids[]" multiple class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                            <label for="users" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Select Users</label>
+                            <select id="users" name="user_ids[]" multiple class="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-300">
                                 @foreach($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
                             @error('user_ids')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
                         </div>
 
